@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partenaires - Services Informatiques</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Reset et styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Header */
+        .partners-header {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 80px 0;
+            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .partners-header img#logo {
+            height: 100px;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            font-size: 2.8em;
+            margin-bottom: 15px;
+        }
+        
+        /* Sections */
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: #2c3e50;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: #1abc9c;
+            margin: 15px auto;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Filtres */
+        .partner-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .filter-btn {
+            padding: 10px 20px;
+            background: white;
+            border: 2px solid #1abc9c;
+            color: #2c3e50;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn.active, .filter-btn:hover {
+            background: #1abc9c;
+            color: white;
+        }
+        
+        /* Grille de partenaires */
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 40px;
+        }
+        
+        .partner-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .partner-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .partner-logo {
+            width: 180px;
+            height: 100px;
+            object-fit: contain;
+            margin-bottom: 20px;
+
+        }
+        
+        .partner-name {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        
+        .partner-country {
+            display: inline-block;
+            padding: 3px 10px;
+            background: #e8f8f5;
+            color: #1abc9c;
+            border-radius: 30px;
+            font-size: 0.8em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .partner-description {
+            margin-bottom: 20px;
+            color: #666;
+            font-size: 0.9em;
+            flex-grow: 1;
+        }
+        
+        .partner-link {
+            display: inline-block;
+            padding: 8px 20px;
+            background: #1abc9c;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9em;
+            transition: background 0.3s ease;
+        }
+        
+        .partner-link:hover {
+            background: #16a085;
+        }
+        
+        /* Section Devenir Partenaire */
+        .become-partner {
+            background-color: #f0f4f8;
+        }
+        
+        .partner-benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .benefit-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .benefit-icon {
+            font-size: 2.5em;
+            color: #1abc9c;
+            margin-bottom: 20px;
+        }
+        
+        /* Section CTA */
+        .cta-section {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 60px 0;
+        }
+        
+        .cta-title {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .cta-btn {
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-btn.primary {
+            background: #1abc9c;
+            color: white;
+        }
+        
+        .cta-btn.secondary {
+            background: white;
+            color: #2c3e50;
+        }
+        
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        i{
+            font-size: 30px;
+            right: auto;
+            border: solid 7px #1abc9c;
+            border-radius: 100px;
+            padding: 8px;
+            margin: 5px;
+        }
+        .align{
+            display: flex;
+            align-items: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .partners-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section {
+                padding: 50px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="partners-header">
+        <img src="/Users/hp/Green and White Modern Computer Service Repair Logo (1).png" alt="Logo Services Informatiques" id="logo">
+        <h1>Nos Partenaires</h1>
+        <p>Des alliances stratégiques pour une offre complète</p>
+    </header>
+<div class="align">
+        <a href="/Users/hp/Code HTML/menu developpé.html"><i class="fa-solid fa-house"></i></a>
+        <h2>Accueil</h2>
+    </div>
+    <!-- Liste des partenaires -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Notre Réseau de Partenaires</h2>
+            
+            <div class="partner-filters">
+                <button class="filter-btn active">Tous</button>
+                <button class="filter-btn">Éditeurs Logiciels</button>
+                <button class="filter-btn">Constructeurs</button>
+                <button class="filter-btn">Institutionnels</button>
+                <button class="filter-btn">Distributeurs</button>
+            </div>
+            
+            <div class="partners-grid">
+                <!-- Partenaire 1 -->
+                <div class="partner-card" data-category="Éditeurs Logiciels">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/1200px-Microsoft_logo.svg.png" alt="Microsoft" class="partner-logo">
+                    <h3 class="partner-name">Microsoft</h3>
+                    <span class="partner-country">Monde</span>
+                    <p class="partner-description">Partenariat Gold depuis 2015 pour les solutions Azure, Office 365 et Windows Server.</p>
+                    <a href="#" class="partner-link">Voir les solutions</a>
+                </div>
+                
+                <!-- Partenaire 2 -->
+                <div class="partner-card" data-category="Constructeurs">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Cisco_logo.svg/1200px-Cisco_logo.svg.png" alt="Cisco" class="partner-logo">
+                    <h3 class="partner-name">Cisco</h3>
+                    <span class="partner-country">Monde</span>
+                    <p class="partner-description">Partenaire certifié pour les solutions réseaux, sécurité et collaboration.</p>
+                    <a href="#" class="partner-link">Découvrir</a>
+                </div>
+                
+                <!-- Partenaire 3 -->
+                <div class="partner-card" data-category="Éditeurs Logiciels">
+                    <img src="/Users/hp/vm ware.jpeg" alt="VMware" class="partner-logo">
+                    <h3 class="partner-name">VMware</h3>
+                    <span class="partner-country">Monde</span>
+                    <p class="partner-description">Solutionnaire Principal pour les solutions de virtualisation et cloud privé.</p>
+                    <a href="#" class="partner-link">En savoir plus</a>
+                </div>
+                
+                <!-- Partenaire 4 -->
+                <div class="partner-card" data-category="Institutionnels">
+                    <img src="/Users/hp/Université paris saclay.png" alt="Paris-Saclay" class="partner-logo">
+                    <h3 class="partner-name">Université Paris-Saclay</h3>
+                    <span class="partner-country">France</span>
+                    <p class="partner-description">Collaboration sur la recherche en cybersécurité et intelligence artificielle.</p>
+                    <a href="#" class="partner-link">Voir les projets</a>
+                </div>
+                
+                <!-- Partenaire 5 -->
+                <div class="partner-card" data-category="Distributeurs">
+                    <img src="/Users/hp/ingram.png" alt="Ingram Micro" class="partner-logo">
+                    <h3 class="partner-name">Ingram Micro</h3>
+                    <span class="partner-country">Europe</span>
+                    <p class="partner-description">Distributeur officiel pour les solutions matérielles et logicielles.</p>
+                    <a href="#" class="partner-link">Accéder au catalogue</a>
+                </div>
+                
+                <!-- Partenaire 6 -->
+                <div class="partner-card" data-category="Éditeurs Logiciels">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/1200px-Amazon_Web_Services_Logo.svg.png" alt="AWS" class="partner-logo">
+                    <h3 class="partner-name">Amazon Web Services</h3>
+                    <span class="partner-country">Monde</span>
+                    <p class="partner-description">Partenaire Advanced Consulting pour les solutions cloud AWS.</p>
+                    <a href="#" class="partner-link">Explorer</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Devenir Partenaire -->
+    <section class="section become-partner">
+        <div class="container">
+            <h2 class="section-title">Devenir Partenaire</h2>
+            
+            <div class="partner-benefits">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Avantages Commerciaux</h3>
+                    <p>Accès à notre portefeuille clients, leads qualifiés et programmes de co-marketing.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>Certifications</h3>
+                    <p>Formations et certifications pour vos équipes sur nos solutions.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Réseau d'Experts</h3>
+                    <p>Intégration à notre écosystème de partenaires technologiques.</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center;">
+                <a href="#" class="cta-btn primary" style="display: inline-block; margin-top: 20px;">
+                    <i class="fas fa-file-signature"></i> Télécharger le kit partenaire
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-title">Vous souhaitez devenir partenaire ?</h2>
+            <p>Rejoignez notre écosystème et développez votre activité avec nous.</p>
+            <div class="cta-buttons">
+                <a href="#" class="cta-btn primary"><i class="fas fa-phone"></i> 07 19 32 36 50</a>
+                <a href="#" class="cta-btn secondary"><i class="fas fa-envelope"></i> Contact partenariat</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background-color: #1a252f; color: white; text-align: center; padding: 30px 0;">
+        <div class="container">
+            <img src="/Users/hp/Green and White Modern Computer Service Repair Logo (1).png" alt="Logo Services Informatiques" style="height: 60px; margin-bottom: 20px;">
+            <p>Construisons ensemble l'innovation technologique</p>
+            <div style="margin: 20px 0;">
+                <a href="#" style="color: #1abc9c; margin: 0 10px;"><i class="fab fa-facebook"></i></a>
+                <a href="#" style="color: #1abc9c; margin: 0 10px;"><i class="fab fa-linkedin"></i></a>
+                <a href="#" style="color: #1abc9c; margin: 0 10px;"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p>&copy; 2023 Services Informatiques. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Filtrage des partenaires par catégorie
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Active le bouton cliqué
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                const category = this.textContent;
+                const partners = document.querySelectorAll('.partner-card');
+                
+                partners.forEach(partner => {
+                    if(category === 'Tous' || partner.dataset.category === category) {
+                        partner.style.display = 'flex';
+                    } else {
+                        partner.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

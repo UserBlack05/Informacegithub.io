@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formations - Services Informatiques</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Reset et styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Header */
+        .training-header {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 80px 0;
+            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .training-header img#logo {
+            height: 100px;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            font-size: 2.8em;
+            margin-bottom: 15px;
+        }
+        
+        /* Sections */
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: #2c3e50;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: #1abc9c;
+            margin: 15px auto;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Filtres */
+        .training-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .filter-btn {
+            padding: 10px 20px;
+            background: white;
+            border: 2px solid #1abc9c;
+            color: #2c3e50;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn.active, .filter-btn:hover {
+            background: #1abc9c;
+            color: white;
+        }
+        
+        /* Grille de formations */
+        .training-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .training-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .training-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .training-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .training-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .training-category {
+            display: inline-block;
+            padding: 5px 10px;
+            background: #e8f8f5;
+            color: #1abc9c;
+            border-radius: 5px;
+            font-size: 0.8em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .training-title {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+        
+        .training-description {
+            margin-bottom: 20px;
+            color: #666;
+            flex-grow: 1;
+        }
+        
+        .training-details {
+            margin-bottom: 25px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .training-detail {
+            display: flex;
+            align-items: center;
+            color: #555;
+            font-size: 0.9em;
+        }
+        
+        .training-detail i {
+            color: #1abc9c;
+            margin-right: 5px;
+        }
+        
+        .training-price {
+            font-size: 1.3em;
+            color: #1abc9c;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .training-btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: #1abc9c;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            text-align: center;
+            transition: background 0.3s ease;
+            margin-top: auto;
+        }
+        
+        .training-btn:hover {
+            background: #16a085;
+        }
+        
+        /* Section Méthodologie */
+        .methodology {
+            background-color: #f0f4f8;
+        }
+        
+        .methodology-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .method-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        
+        .method-icon {
+            font-size: 2.5em;
+            color: #1abc9c;
+            margin-bottom: 20px;
+        }
+        
+        /* Section CTA */
+        .cta-section {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 60px 0;
+        }
+        
+        .cta-title {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .cta-btn {
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-btn.primary {
+            background: #1abc9c;
+            color: white;
+        }
+        
+        .cta-btn.secondary {
+            background: white;
+            color: #2c3e50;
+        }
+        
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        i{
+            font-size: 30px;
+            right: auto;
+            border: solid 7px #1abc9c;
+            border-radius: 100px;
+            padding: 8px;
+            margin: 5px;
+        }
+        .align{
+            display: flex;
+            align-items: center;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .training-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section {
+                padding: 50px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="training-header">
+        <img src="logo.png" alt="Logo Services Informatiques" id="logo">
+        <h1>Nos Formations</h1>
+        <p>Développez vos compétences avec nos experts certifiés</p>
+    </header>
+    <div class="align">
+        <a href="/Users/hp/Code HTML/menu developpé.html"><i class="fa-solid fa-house"></i></a>
+        <h2>Accueil</h2>
+    </div>
+    <!-- Catalogue de formations -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Notre Catalogue de Formations</h2>
+            
+            <div class="training-filters">
+                <button class="filter-btn active">Toutes</button>
+                <button class="filter-btn">Cybersécurité</button>
+                <button class="filter-btn">Cloud</button>
+                <button class="filter-btn">Réseaux</button>
+                <button class="filter-btn">Développement</button>
+                <button class="filter-btn">Certifications</button>
+            </div>
+            
+            <div class="training-grid">
+                <!-- Formation 1 -->
+                <div class="training-card" data-category="Cybersécurité">
+                    <img src="/Users/hp/Cybersecurity.jpeg" alt="Formation cybersécurité" class="training-image">
+                    <div class="training-content">
+                        <span class="training-category">Cybersécurité</span>
+                        <h3 class="training-title">Fundamentals of Cybersecurity</h3>
+                        <p class="training-description">Acquérez les bases essentielles pour protéger vos systèmes contre les cybermenaces.</p>
+                        <div class="training-details">
+                            <span class="training-detail"><i class="fas fa-clock"></i> 5 jours</span>
+                            <span class="training-detail"><i class="fas fa-user-graduate"></i> Débutant</span>
+                            <span class="training-detail"><i class="fas fa-chalkboard-teacher"></i> Présentiel/Distanciel</span>
+                        </div>
+                        <div class="training-price">800 000 FCFA HT</div>
+                        <a href="#" class="training-btn">S'inscrire</a>
+                    </div>
+                </div>
+                
+                <!-- Formation 2 -->
+                <div class="training-card" data-category="Cloud">
+                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Formation AWS" class="training-image">
+                    <div class="training-content">
+                        <span class="training-category">Cloud</span>
+                        <h3 class="training-title">Architecte Solutions AWS</h3>
+                        <p class="training-description">Préparez la certification AWS Solutions Architect Associate avec nos experts.</p>
+                        <div class="training-details">
+                            <span class="training-detail"><i class="fas fa-clock"></i> 4 jours</span>
+                            <span class="training-detail"><i class="fas fa-user-graduate"></i> Intermédiaire</span>
+                            <span class="training-detail"><i class="fas fa-chalkboard-teacher"></i> Présentiel</span>
+                        </div>
+                        <div class="training-price">1 000 000 FCFA HT</div>
+                        <a href="#" class="training-btn">S'inscrire</a>
+                    </div>
+                </div>
+                
+                <!-- Formation 3 -->
+                <div class="training-card" data-category="Réseaux">
+                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Formation Cisco" class="training-image">
+                    <div class="training-content">
+                        <span class="training-category">Réseaux</span>
+                        <h3 class="training-title">CCNA Cisco - Nouvelle Version</h3>
+                        <p class="training-description">Maîtrisez les concepts fondamentaux des réseaux avec la nouvelle certification CCNA.</p>
+                        <div class="training-details">
+                            <span class="training-detail"><i class="fas fa-clock"></i> 10 jours</span>
+                            <span class="training-detail"><i class="fas fa-user-graduate"></i> Tous niveaux</span>
+                            <span class="training-detail"><i class="fas fa-chalkboard-teacher"></i> Présentiel</span>
+                        </div>
+                        <div class="training-price">1 500 000 FCFA HT</div>
+                        <a href="#" class="training-btn">S'inscrire</a>
+                    </div>
+                </div>
+                
+                <!-- Formation 4 -->
+                <div class="training-card" data-category="Développement">
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Formation Python" class="training-image">
+                    <div class="training-content">
+                        <span class="training-category">Développement</span>
+                        <h3 class="training-title">Python Avancé</h3>
+                        <p class="training-description">Approfondissez vos connaissances en Python avec des cas pratiques concrets.</p>
+                        <div class="training-details">
+                            <span class="training-detail"><i class="fas fa-clock"></i> 3 jours</span>
+                            <span class="training-detail"><i class="fas fa-user-graduate"></i> Avancé</span>
+                            <span class="training-detail"><i class="fas fa-chalkboard-teacher"></i> Distanciel</span>
+                        </div>
+                        <div class="training-price">500 000 FCFA HT</div>
+                        <a href="#" class="training-btn">S'inscrire</a>
+                    </div>
+                </div>
+                
+                <!-- Formation 5 -->
+                <div class="training-card" data-category="Certifications">
+                    <img src="https://images.unsplash.com/photo-1531545514256-b1400bc00f31?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Formation ITIL" class="training-image">
+                    <div class="training-content">
+                        <span class="training-category">Certifications</span>
+                        <h3 class="training-title">ITIL 4 Foundation</h3>
+                        <p class="training-description">Découvrez les bonnes pratiques du management des services IT avec ITIL 4.</p>
+                        <div class="training-details">
+                            <span class="training-detail"><i class="fas fa-clock"></i> 2 jours</span>
+                            <span class="training-detail"><i class="fas fa-user-graduate"></i> Tous niveaux</span>
+                            <span class="training-detail"><i class="fas fa-chalkboard-teacher"></i> Présentiel/Distanciel</span>
+                        </div>
+                        <div class="training-price"> 400 000 FCFA HT</div>
+                        <a href="#" class="training-btn">S'inscrire</a>
+                    </div>
+                </div>
+                
+                <!-- Formation 6 -->
+                <div class="training-card" data-category="Cybersécurité">
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Formation CEH" class="training-image">
+                    <div class="training-content">
+                        <span class="training-category">Cybersécurité</span>
+                        <h3 class="training-title">Certified Ethical Hacker (CEH)</h3>
+                        <p class="training-description">Apprenez à penser comme un hacker pour mieux défendre vos systèmes.</p>
+                        <div class="training-details">
+                            <span class="training-detail"><i class="fas fa-clock"></i> 5 jours</span>
+                            <span class="training-detail"><i class="fas fa-user-graduate"></i> Avancé</span>
+                            <span class="training-detail"><i class="fas fa-chalkboard-teacher"></i> Présentiel</span>
+                        </div>
+                        <div class="training-price">1 300 000 FCFA HT</div>
+                        <a href="#" class="training-btn">S'inscrire</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Méthodologie -->
+    <section class="section methodology">
+        <div class="container">
+            <h2 class="section-title">Notre Méthode Pédagogique</h2>
+            
+            <div class="methodology-grid">
+                <div class="method-card">
+                    <div class="method-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Pratique</h3>
+                    <p>60% du temps consacré à des exercices pratiques et études de cas concrets.</p>
+                </div>
+                
+                <div class="method-card">
+                    <div class="method-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3>Experts</h3>
+                    <p>Formateurs certifiés avec une expérience terrain significative.</p>
+                </div>
+                
+                <div class="method-card">
+                    <div class="method-icon">
+                        <i class="fas fa-user-friends"></i>
+                    </div>
+                    <h3>Personnalisé</h3>
+                    <p>Groupes de 8 personnes maximum pour un suivi individualisé.</p>
+                </div>
+                
+                <div class="method-card">
+                    <div class="method-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>Certifiante</h3>
+                    <p>Préparation aux certifications officielles avec taux de réussite de 92%.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-title">Formation sur mesure pour votre entreprise</h2>
+            <p>Nous adaptons nos programmes à vos besoins spécifiques et à votre secteur d'activité.</p>
+            <div class="cta-buttons">
+                <a href="#" class="cta-btn primary"><i class="fas fa-phone"></i> 01 23 45 67 89</a>
+                <a href="#" class="cta-btn secondary"><i class="fas fa-envelope"></i> Demander un programme</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background-color: #1a252f; color: white; text-align: center; padding: 30px 0;">
+        <div class="container">
+            <img src="/Users/Green_and_White_Modern_Computer_Service_Repair_Logo__1_-removebg-preview.png" alt="Logo Services Informatiques" style="height: 60px; margin-bottom: 20px;">
+            <p>Votre partenaire formation depuis 2010</p>
+            <div style="margin: 20px 0;">
+                <a href="#" style="color: #1abc9c; margin: 0 10px;"><i class="fab fa-facebook"></i></a>
+                <a href="#" style="color: #1abc9c; margin: 0 10px;"><i class="fab fa-linkedin"></i></a>
+                <a href="#" style="color: #1abc9c; margin: 0 10px;"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p>&copy; 2023 Services Informatiques. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Filtrage des formations par catégorie
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Active le bouton cliqué
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                const category = this.textContent;
+                const trainings = document.querySelectorAll('.training-card');
+                
+                trainings.forEach(training => {
+                    if(category === 'Toutes' || training.dataset.category === category) {
+                        training.style.display = 'flex';
+                    } else {
+                        training.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

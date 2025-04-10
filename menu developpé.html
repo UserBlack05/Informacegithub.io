@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services Informatiques</title>
+    <link rel="stylesheet" href="/Users/hp/Code CSS/menu développé.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <!-- Bannière avec logo -->
+    <header >
+        <img src="/Users/hp/Green and White Modern Computer Service Repair Logo (1).png" alt="Logo Services Informatiques" id="logo">
+        <h1>Services Informatiques</h1>
+    </header>
+
+    <!-- Menu général déroulant élargi -->
+    <nav>
+        <ul>
+            <li><a href="#">Accueil</a></li>
+            
+            <li>
+                <a href="/Users/hp/Code HTML/Menu Presentation.html">Présentation</a>
+                <div class="container"><ul>
+                    <div class="submenu-column">
+                        <h3>Historique</h3>
+                        
+                        <h3>Mission</h3>
+                    
+                        <h3>Équipe</h3>
+                        
+                            
+                        
+                    </div>
+                </ul>
+            </div>
+            </li>
+            
+            <li>
+                <a href="/Users/hp/Code HTML/Menu Prestation.html">Prestations</a>
+                <ul>
+                    <div class="submenu-column">
+                        <h3>Réseaux Informatiques</h3>
+                        
+                        <h3>Telecommunication</h3>
+                    
+                        <h3>Génie Logiciel</h3>
+                       
+                        <h3>Sécurité des SI</h3>
+                        
+                    </div>
+                    
+                </ul>
+            </div>
+                
+            </li>
+            
+            <li>
+                <a href="/Users/hp/Code HTML/Menu Formation.html">Formations</a>
+                <ul>
+                    <div class="submenu-column">
+                        <h3>Certifications</h3>
+
+                        <h3>Seminaire</h3>
+                      
+                        <h3>Ateliers Pratiques</h3>
+                       
+                            
+                    </div>
+                </ul>
+            </div>
+                
+            </li>
+            
+            <li><a href="/Users/hp/Code HTML/Menu Partenaire.html ">Partenaires</a>
+                <ul>
+                    <div class="submenu-column">
+                        <h3>Nationaux</h3>
+                       
+                        <h3>Internationaux</h3>
+                    </div>
+                   
+                </ul>
+            </li>
+            <li><a href="#">Contacts</a>
+                <ul>
+                    <div class="submenu-column">
+                        <h3>Réseaux sociaux</h3>
+                        
+                   
+                        <h3>Coordonnées</h3>
+                    </div>
+                </ul></li>
+            
+            <li style="margin-left: auto;">
+                <a href="#" id="inscription-icon"><i class="fas fa-user-plus"></i> Inscription</a>
+            </li>
+            <li>
+                <a href="#" id="connexion-icon"><i class="fas fa-sign-in-alt"></i> Connexion</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Contenu principal avec menu droit -->
+    <main>
+        <!-- Menu droit -->
+        <aside id="menu-droit">
+            <h3>Menu </h3>
+            <ul>
+                <h4>Decouvrez notre entreprise </h4>
+                <li><a href="/Users/hp/Code HTML/Page annexe.html">Actualités</a></li>
+                <li><a href="#">Témoignages</a></li>
+                <li><a href="/Users/hp/Code HTML/Page Annexe (Equipe).html">Equipe</a></li>
+            </ul>
+        </aside>
+
+        <!-- Slide d'images défilante -->
+        <div class="slideshow-container">
+            <div class="mySlides">
+                <img src="/Users/hp/les-services-informatiques.webp" alt="Services Informatiques">
+            </div>
+            <div class="mySlides">
+                <img src="/Users/hp/expertise technonolique.jpg" alt="Expertise technologique">
+            </div>
+            <div class="mySlides">
+                <img src="/Users/hp/Support.jpg" alt="Support client">
+            </div>
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+    </main>
+
+    <!-- Formulaire d'inscription -->
+    <div id="inscription-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Inscription</h2>
+            <div class="tab">
+                <button class="tablinks" onclick="openTab(event, 'Client')">Client</button>
+                <button class="tablinks" onclick="openTab(event, 'Fournisseur')">Fournisseur</button>
+                <button class="tablinks" onclick="openTab(event, 'Partenaire')">Partenaire</button>
+            </div>
+
+            <div id="Client" class="tabcontent">
+                <h3>Client</h3>
+                <form class="styled-form">
+                    <label for="clientEmail">Adresse e-mail</label>
+                    <input type="email" id="clientEmail" name="clientEmail" placeholder="Entrez votre adresse e-mail" required>
+
+                    <label for="clientPassword">Mot de passe</label>
+                    <input type="password" id="clientPassword" name="clientPassword" placeholder="Entrez votre mot de passe" required>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="clientLogout" name="clientLogout">
+                        <label for="clientLogout">Déconnexion automatique après 7 jours</label>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="clientPhone" name="clientPhone">
+                        <label for="clientPhone">Enregistrer le compte</label>
+                    </div>
+
+                    <button type="submit" class="continue-button">Continuer</button>
+                </form>
+            </div>
+
+            <div id="Fournisseur" class="tabcontent">
+                <h3>Fournisseur</h3>
+                <form class="styled-form">
+                    <label for="supplierEmail">Adresse e-mail</label>
+                    <input type="email" id="supplierEmail" name="supplierEmail" placeholder="Entrez votre adresse e-mail" required>
+
+                    <label for="supplierPassword">Mot de passe</label>
+                    <input type="password" id="supplierPassword" name="supplierPassword" placeholder="Entrez votre mot de passe" required>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="supplierLogout" name="supplierLogout">
+                        <label for="supplierLogout">Déconnexion automatique après 7 jours</label>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="supplierPhone" name="supplierPhone">
+                        <label for="supplierPhone">Enregistrer le compte</label>
+                    </div>
+
+                    <button type="submit" class="continue-button">Continuer</button>
+                </form>
+            </div>
+
+            <div id="Partenaire" class="tabcontent">
+                <h3>Partenaire</h3>
+                <form class="styled-form">
+                    <label for="partnerEmail">Adresse e-mail</label>
+                    <input type="email" id="partnerEmail" name="partnerEmail" placeholder="Entrez votre adresse e-mail" required>
+
+                    <label for="partnerPassword">Mot de passe</label>
+                    <input type="password" id="partnerPassword" name="partnerPassword" placeholder="Entrez votre mot de passe" required>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="partnerLogout" name="partnerLogout">
+                        <label for="partnerLogout">Déconnexion automatique après 7 jours</label>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="partnerPhone" name="partnerPhone">
+                        <label for="partnerPhone">Enregistrer le compte</label>
+                    </div>
+
+                    <button type="submit" class="continue-button">Continuer</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Formulaire de connexion -->
+    <div id="connexion-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Connexion</h2>
+            <form class="styled-form">
+                <label for="loginEmail">Adresse e-mail</label>
+                <input type="email" id="loginEmail" name="loginEmail" placeholder="Entrez votre adresse e-mail" required>
+
+                <label for="loginPassword">Mot de passe</label>
+                <input type="password" id="loginPassword" name="loginPassword" placeholder="Entrez votre mot de passe" required>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="loginLogout" name="loginLogout">
+                    <label for="loginLogout">Déconnexion automatique après 7 jours de non utilisation</label>
+                </div>
+
+                <button type="submit" class="continue-button">Se connecter</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Pied de page -->
+    <footer>
+        <p>&copy; 2025 Services Informatiques. Tous droits réservés.</p>
+        <p>Licence : G./PMIAGE - EIA</p>
+    </footer>
+
+    <script>
+        // Script pour la slide d'images défilante
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slides[slideIndex-1].style.display = "block";
+        }
+
+        // Script pour les onglets des formulaires
+        function openTab(evt, tabName) {
+            let i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // Script pour les modales d'inscription et de connexion
+        const inscriptionIcon = document.getElementById("inscription-icon");
+        const connexionIcon = document.getElementById("connexion-icon");
+        const inscriptionModal = document.getElementById("inscription-modal");
+        const connexionModal = document.getElementById("connexion-modal");
+        const closeButtons = document.getElementsByClassName("close");
+
+        inscriptionIcon.onclick = function() {
+            inscriptionModal.style.display = "flex";
+        }
+
+        connexionIcon.onclick = function() {
+            connexionModal.style.display = "flex";
+        }
+
+        for (let i = 0; i < closeButtons.length; i++) {
+            closeButtons[i].onclick = function() {
+                inscriptionModal.style.display = "none";
+                connexionModal.style.display = "none";
+            }
+        }
+
+        window.onclick = function(event) {
+            if (event.target == inscriptionModal || event.target == connexionModal) {
+                inscriptionModal.style.display = "none";
+                connexionModal.style.display = "none";
+            }
+        }
+
+        // Afficher le premier onglet par défaut
+        document.querySelector(".tablinks").click();
+        // Gestion du clic sur le lien du formulaire de contact
+document.getElementById('form-contact-link')?.addEventListener('click', function(e) {
+    e.preventDefault();
+    // Fermer tous les sous-menus
+    document.querySelectorAll('nav ul li ul').forEach(menu => {
+        menu.style.display = 'none';
+    });
+    // Ouvrir la modal de contact
+    document.getElementById('connexion-modal').style.display = 'flex';
+});
+    </script>
+</body>
+</html>

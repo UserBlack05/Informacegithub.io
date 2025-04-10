@@ -1,0 +1,411 @@
+/* Reset et styles de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f5f7fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+header img#logo {
+    height: 100px;
+    margin-bottom: 10px;
+    
+}
+
+header h1 {
+    font-size: 2.2em;
+    font-weight: 300;
+    font-weight: bold;
+}
+
+/* Navigation principale - Style élargi */
+nav {
+    background-color: #2c3e50;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+nav > ul {
+    display: flex;
+    list-style: none;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+   
+}
+
+nav > ul > li {
+    position: relative;
+    
+}
+
+nav > ul > li > a {
+    color: white;
+    text-decoration: none;
+    padding: 15px 20px;
+    display: block;
+    font-weight: 500;
+    transition: all 0.3s;
+  
+}
+
+nav > ul > li:hover > a {
+    background-color: #1abc9c;
+    
+}
+
+/* Sous-menu élargi */
+nav ul li ul {
+    display: none;
+    position: absolute;
+    width: 180px;
+    background-color: #34495e;
+    padding: 25px 10%;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    z-index: 1000;
+    list-style: none;
+   
+}
+
+nav ul li:hover ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    height: 250px;
+    
+}
+
+/* Colonnes de sous-menu */
+.submenu-column {
+    flex: 0 0 23%;
+    margin-bottom: 15px;
+
+}
+
+.submenu-column h3 {
+    color: #1abc9c;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #3d566e;
+    font-size: 1.1em;
+}
+
+.submenu-column ul {
+    list-style: none;
+}
+
+.submenu-column li {
+    margin-bottom: 10px;
+}
+
+.submenu-column a {
+    color: #ecf0f1;
+    text-decoration: none;
+    display: block;
+    padding: 5px 0;
+    transition: all 0.2s;
+    font-size: 0.95em;
+}
+
+.submenu-column a:hover {
+    color: #1abc9c;
+    padding-left: 5px;
+}
+
+.submenu-desc {
+    font-size: 0.8em;
+    color: #030303;
+    margin-top: 3px;
+    line-height: 1.4;
+}
+
+/* Contenu principal */
+main {
+    max-width: 1300px;
+    margin: 10px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+/* Menu droit */
+#menu-droit {
+    flex: 0 0 250px;
+    background: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    height: 350px;
+}
+
+#menu-droit h3 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+#menu-droit ul {
+    list-style: none;
+}
+
+#menu-droit li {
+    margin-bottom: 8px;
+}
+
+#menu-droit a {
+    color: #3498db;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+#menu-droit a:hover {
+    color: #1abc9c;
+}
+
+/* Slideshow */
+.slideshow-container {
+    flex: 1;
+    position: relative;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    height: 350px;
+}
+
+.mySlides {
+    display: none;
+    width: 100%;
+    object-fit: contain;
+}
+
+.mySlides img {
+    width: 100%;
+    height: auto;
+    display: block;
+    background: cover;
+    object-fit: contain;
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    background-color: rgba(0,0,0,0.3);
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+/* Footer */
+footer {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 30px;
+    height: 60px;
+}
+
+/* Modales */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 25px;
+    border-radius: 5px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.close {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #7f8c8d;
+}
+
+.close:hover {
+    color: #e74c3c;
+}
+/* styles.css */
+
+/* Style général des formulaires */
+.styled-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.styled-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+}
+
+.styled-form input[type="email"],
+.styled-form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.styled-form input[type="email"]:focus,
+.styled-form input[type="password"]:focus {
+    border-color: #1abc9c;
+    outline: none;
+}
+
+/* Style des cases à cocher */
+.checkbox-group {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-group input[type="checkbox"] {
+    margin-right: 10px;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.checkbox-group label {
+    margin: 0;
+    font-weight: normal;
+    color: #555;
+    cursor: pointer;
+}
+
+/* Bouton "Continuer" */
+.continue-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #1abc9c;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.continue-button:hover {
+    background-color: #16a085;
+}
+
+/* Style des onglets */
+.tab button {
+    background-color: #34495e;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin: 0 5px;
+    border-radius: 5px;
+}
+
+.tab button:hover {
+    background-color: #1abc9c;
+}
+
+.tab button.active {
+    background-color: #1abc9c;
+}
+
+.tabcontent {
+    display: none;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+.container{
+    background-color: rgba(0,0,0,0.5);
+}
+/* Styles pour les icônes de contact */
+.submenu-column a i {
+    width: 20px;
+    text-align: center;
+    margin-right: 8px;
+    color: #1abc9c;
+}
+
+/* Style spécifique pour le lien de formulaire */
+#form-contact-link {
+    cursor: pointer;
+}
+
+/* Adaptation responsive pour le sous-menu contact */
+@media (max-width: 768px) {
+    nav ul li:hover ul {
+        height: auto;
+        padding: 15px 5%;
+    }
+    .submenu-column {
+        flex: 0 0 100%;
+    }
+}
