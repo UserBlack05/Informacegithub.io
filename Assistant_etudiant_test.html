@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudAssist - Assistant Étudiant Intelligent</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3a0ca3;
+            --accent-color: #4cc9f0;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --success-color: #38b000;
+            --warning-color: #ff9e00;
+            --danger-color: #ef476f;
+        }
+        
+        body {
+            background-color: #f5f7ff;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1.5rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .logo i {
+            color: var(--accent-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero section */
+        .hero {
+            padding: 4rem 0;
+            text-align: center;
+            background-color: white;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            color: #555;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(67, 97, 238, 0.3);
+        }
+        
+        .cta-button:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(67, 97, 238, 0.4);
+        }
+        
+        /* Features */
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--secondary-color);
+            font-size: 2.2rem;
+        }
+        
+        .features {
+            padding: 3rem 0;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+        
+        /* Tools section */
+        .tools {
+            padding: 3rem 0;
+            background-color: white;
+            border-radius: 20px;
+            margin-bottom: 3rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .tools-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .tool-card {
+            background-color: var(--light-color);
+            border-radius: 10px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            border-left: 5px solid var(--primary-color);
+        }
+        
+        .tool-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .tool-icon {
+            background-color: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+        
+        .tool-card h3 {
+            color: var(--secondary-color);
+        }
+        
+        .tool-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s;
+            align-self: flex-start;
+        }
+        
+        .tool-btn:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        /* Calendar */
+        .calendar-section {
+            margin-bottom: 3rem;
+        }
+        
+        .calendar-container {
+            background-color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+        }
+        
+        .calendar-day {
+            padding: 15px 5px;
+            text-align: center;
+            border-radius: 8px;
+            font-weight: 600;
+            background-color: #f0f2ff;
+            color: var(--secondary-color);
+        }
+        
+        .calendar-date {
+            padding: 15px 5px;
+            text-align: center;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .calendar-date:hover {
+            background-color: #e6e9ff;
+        }
+        
+        .calendar-date.today {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .calendar-date.has-event {
+            border: 2px solid var(--accent-color);
+        }
+        
+        /* To-do list */
+        .todo-section {
+            margin-bottom: 3rem;
+        }
+        
+        .todo-container {
+            background-color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .todo-input-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .todo-input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        
+        .todo-add-btn {
+            background-color: var(--success-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .todo-list {
+            list-style: none;
+        }
+        
+        .todo-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .todo-item:last-child {
+            border-bottom: none;
+        }
+        
+        .todo-checkbox {
+            margin-right: 15px;
+            width: 20px;
+            height: 20px;
+        }
+        
+        .todo-text {
+            flex: 1;
+        }
+        
+        .todo-text.completed {
+            text-decoration: line-through;
+            color: #888;
+        }
+        
+        .todo-delete {
+            color: var(--danger-color);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column h3 {
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid #444;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .calendar-grid {
+                gap: 5px;
+            }
+            
+            .calendar-date, .calendar-day {
+                padding: 10px 2px;
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                top: 1.5rem;
+                right: 1.5rem;
+            }
+            
+            nav {
+                display: none;
+                width: 100%;
+                margin-top: 1rem;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .hero {
+                padding: 2.5rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>StudAssist</span>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#fonctionnalites">Fonctionnalités</a></li>
+                    <li><a href="#outils">Outils</a></li>
+                    <li><a href="#calendrier">Calendrier</a></li>
+                    <li><a href="#todo">To-Do</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero section -->
+    <section class="hero" id="accueil">
+        <div class="container">
+            <h1>Votre Assistant Étudiant Intelligent</h1>
+            <p>Organisez vos études, gérez vos deadlines, planifiez vos révisions et améliorez votre productivité avec StudAssist. Tout ce dont vous avez besoin pour réussir votre année académique.</p>
+            <a href="#outils" class="cta-button">Découvrir les outils</a>
+        </div>
+    </section>
+
+    <!-- Features section -->
+    <section class="features" id="fonctionnalites">
+        <div class="container">
+            <h2 class="section-title">Fonctionnalités principales</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>Calendrier Intelligent</h3>
+                    <p>Planifiez vos cours, examens et deadlines avec un calendrier interactif et des rappels automatiques.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <h3>Gestion des Tâches</h3>
+                    <p>Créez des listes de tâches, suivez votre progression et restez organisé tout au long du semestre.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3>Ressources d'étude</h3>
+                    <p>Accédez à des fiches de révision, des quiz interactifs et des conseils d'étude personnalisés.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools section -->
+    <section class="tools" id="outils">
+        <div class="container">
+            <h2 class="section-title">Outils Étudiants</h2>
+            <div class="tools-container">
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <h3>Calculateur de Notes</h3>
+                    </div>
+                    <p>Calculez votre moyenne et simulez vos notes pour atteindre vos objectifs académiques.</p>
+                    <button class="tool-btn" onclick="openGradeCalculator()">Utiliser</button>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3>Planificateur de Révisions</h3>
+                    </div>
+                    <p>Créez un planning de révisions personnalisé en fonction de vos examens et de votre charge de travail.</p>
+                    <button class="tool-btn" onclick="openRevisionPlanner()">Utiliser</button>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <h3>Générateur de Bibliographie</h3>
+                    </div>
+                    <p>Générez automatiquement des références bibliographiques dans différents formats (APA, MLA, etc.).</p>
+                    <button class="tool-btn" onclick="openBibliographyGenerator()">Utiliser</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calendar section -->
+    <section class="calendar-section" id="calendrier">
+        <div class="container">
+            <h2 class="section-title">Calendrier Académique</h2>
+            <div class="calendar-container">
+                <div class="calendar-header">
+                    <h3>Octobre 2023</h3>
+                    <div>
+                        <button class="tool-btn" style="margin-right: 10px;" onclick="previousMonth()"><i class="fas fa-chevron-left"></i></button>
+                        <button class="tool-btn" onclick="nextMonth()"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+                <div class="calendar-grid" id="calendar">
+                    <!-- Les jours de la semaine et dates seront générés par JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- To-do section -->
+    <section class="todo-section" id="todo">
+        <div class="container">
+            <h2 class="section-title">Liste des Tâches</h2>
+            <div class="todo-container">
+                <div class="todo-input-container">
+                    <input type="text" class="todo-input" id="todoInput" placeholder="Ajouter une nouvelle tâche...">
+                    <button class="todo-add-btn" id="addTodoBtn">Ajouter</button>
+                </div>
+                <ul class="todo-list" id="todoList">
+                    <!-- Les tâches seront ajoutées dynamiquement -->
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>StudAssist</h3>
+                    <p>Votre compagnon intelligent pour réussir vos études. Organisation, productivité et réussite académique.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Liens rapides</h3>
+                    <ul class="footer-links">
+                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#fonctionnalites">Fonctionnalités</a></li>
+                        <li><a href="#outils">Outils</a></li>
+                        <li><a href="#calendrier">Calendrier</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Ressources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Fiches de révision</a></li>
+                        <li><a href="#">Modèles de documents</a></li>
+                        <li><a href="#">Conseils d'étude</a></li>
+                        <li><a href="#">Blog étudiant</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 StudAssist. Tous droits réservés. Conçu pour les étudiants, par des étudiants.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu mobile
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            mobileMenuBtn.innerHTML = mainNav.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Fermer le menu mobile quand on clique sur un lien
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                mainNav.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Calendrier
+        const calendarEl = document.getElementById('calendar');
+        const months = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"];
+        const daysOfWeek = ["Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim"];
+        
+        let currentDate = new Date();
+        let currentMonth = currentDate.getMonth();
+        let currentYear = currentDate.getFullYear();
+        
+        function renderCalendar(month, year) {
+            // Effacer le calendrier actuel
+            calendarEl.innerHTML = '';
+            
+            // Ajouter les jours de la semaine
+            daysOfWeek.forEach(day => {
+                const dayElement = document.createElement('div');
+                dayElement.className = 'calendar-day';
+                dayElement.textContent = day;
+                calendarEl.appendChild(dayElement);
+            });
+            
+            // Premier jour du mois
+            const firstDay = new Date(year, month, 1).getDay();
+            // Ajustement pour commencer le lundi
+            const firstDayIndex = firstDay === 0 ? 6 : firstDay - 1;
+            
+            // Dernier jour du mois
+            const lastDate = new Date(year, month + 1, 0).getDate();
+            
+            // Jours du mois précédent
+            const prevMonthLastDate = new Date(year, month, 0).getDate();
+            
+            // Ajouter les jours du mois précédent
+            for (let i = firstDayIndex; i > 0; i--) {
+                const dateElement = document.createElement('div');
+                dateElement.className = 'calendar-date';
+                dateElement.textContent = prevMonthLastDate - i + 1;
+                dateElement.style.color = '#aaa';
+                calendarEl.appendChild(dateElement);
+            }
+            
+            // Ajouter les jours du mois actuel
+            const today = new Date();
+            for (let i = 1; i <= lastDate; i++) {
+                const dateElement = document.createElement('div');
+                dateElement.className = 'calendar-date';
+                dateElement.textContent = i;
+                
+                // Marquer la date d'aujourd'hui
+                if (i === today.getDate() && month === today.getMonth() && year === today.getFullYear()) {
+                    dateElement.classList.add('today');
+                }
+                
+                // Ajouter des événements pour certaines dates (exemple)
+                if ((month === 9 && i === 15) || (month === 9 && i === 20) || (month === 9 && i === 25)) {
+                    dateElement.classList.add('has-event');
+                    dateElement.title = "Examen ou deadline";
+                }
+                
+                calendarEl.appendChild(dateElement);
+            }
+            
+            // Mettre à jour le titre du calendrier
+            document.querySelector('.calendar-header h3').textContent = `${months[month]} ${year}`;
+        }
+        
+        function previousMonth() {
+            currentMonth--;
+            if (currentMonth < 0) {
+                currentMonth = 11;
+                currentYear--;
+            }
+            renderCalendar(currentMonth, currentYear);
+        }
+        
+        function nextMonth() {
+            currentMonth++;
+            if (currentMonth > 11) {
+                currentMonth = 0;
+                currentYear++;
+            }
+            renderCalendar(currentMonth, currentYear);
+        }
+        
+        // Initialiser le calendrier
+        renderCalendar(currentMonth, currentYear);
+        
+        // To-Do List
+        const todoInput = document.getElementById('todoInput');
+        const addTodoBtn = document.getElementById('addTodoBtn');
+        const todoList = document.getElementById('todoList');
+        
+        // Tâches par défaut
+        const defaultTodos = [
+            "Réviser pour l'examen de Mathématiques",
+            "Terminer le rapport de Physique",
+            "Préparer la présentation d'Histoire",
+            "Lire les chapitres 5-7 de Biologie"
+        ];
+        
+        // Charger les tâches depuis le localStorage ou utiliser les tâches par défaut
+        let todos = JSON.parse(localStorage.getItem('studentTodos')) || defaultTodos.map(text => ({ text, completed: false }));
+        
+        // Rendre les tâches
+        function renderTodos() {
+            todoList.innerHTML = '';
+            
+            todos.forEach((todo, index) => {
+                const todoItem = document.createElement('li');
+                todoItem.className = 'todo-item';
+                
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.className = 'todo-checkbox';
+                checkbox.checked = todo.completed;
+                checkbox.addEventListener('change', () => toggleTodo(index));
+                
+                const todoText = document.createElement('span');
+                todoText.className = `todo-text ${todo.completed ? 'completed' : ''}`;
+                todoText.textContent = todo.text;
+                
+                const deleteBtn = document.createElement('button');
+                deleteBtn.className = 'todo-delete';
+                deleteBtn.innerHTML = '<i class="fas fa-trash"></i>';
+                deleteBtn.addEventListener('click', () => deleteTodo(index));
+                
+                todoItem.appendChild(checkbox);
+                todoItem.appendChild(todoText);
+                todoItem.appendChild(deleteBtn);
+                
+                todoList.appendChild(todoItem);
+            });
+            
+            // Sauvegarder dans le localStorage
+            localStorage.setItem('studentTodos', JSON.stringify(todos));
+        }
+        
+        function addTodo() {
+            const text = todoInput.value.trim();
+            if (text) {
+                todos.push({ text, completed: false });
+                todoInput.value = '';
+                renderTodos();
+            }
+        }
+        
+        function toggleTodo(index) {
+            todos[index].completed = !todos[index].completed;
+            renderTodos();
+        }
+        
+        function deleteTodo(index) {
+            todos.splice(index, 1);
+            renderTodos();
+        }
+        
+        addTodoBtn.addEventListener('click', addTodo);
+        todoInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') addTodo();
+        });
+        
+        // Initialiser la liste des tâches
+        renderTodos();
+        
+        // Fonctions pour les outils
+        function openGradeCalculator() {
+            alert("Calculateur de notes ouvert! Cette fonctionnalité permettrait de calculer vos moyennes en fonction des notes saisies.");
+        }
+        
+        function openRevisionPlanner() {
+            alert("Planificateur de révisions ouvert! Cet outil vous aiderait à créer un planning de révisions personnalisé.");
+        }
+        
+        function openBibliographyGenerator() {
+            alert("Générateur de bibliographie ouvert! Cet outil vous aiderait à générer des références bibliographiques dans le format requis.");
+        }
+        
+        // Smooth scroll pour les ancres
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
